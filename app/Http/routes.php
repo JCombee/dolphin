@@ -11,6 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Dashboard@index');
+Route::get('/dashboard', array('as' => 'dashboard', 'uses' => 'Dashboard@index'));
+
+Route::get('/tasks', array('as' => 'tasks', 'uses' => 'Tasks@index'));
+Route::get('/tasks/add', array('as' => 'tasks.add', 'uses' => 'Tasks@index'));
+
+Route::get('/workers', array('as' => 'workers', 'uses' => 'Workers@index'));
+Route::get('/workers/add', array('as' => 'workers.add', 'uses' => 'Workers@index'));
+
