@@ -18,7 +18,11 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return view('crud.table', ['title' => 'Workers', 'collumns' => ['name' => 'Name', 'user_id' => 'Worker'], 'rows' => Task::all()]);
+        return view('crud.table', [
+            'title' => 'Workers',
+            'collumns' => ['name' => 'Name', 'user_id' => 'Employee', 'planed' => 'Planned'],
+            'rows' => Task::all()
+        ]);
     }
 
     /**
