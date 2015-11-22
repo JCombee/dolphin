@@ -11,12 +11,21 @@
 |
 */
 
-Route::get('/', 'Dashboard@index');
-Route::get('/dashboard', array('as' => 'dashboard', 'uses' => 'Dashboard@index'));
+Route::get('/', function () {
+    return redirect('/dashboard');
+});
 
-Route::get('/tasks', array('as' => 'tasks', 'uses' => 'Tasks@index'));
-Route::get('/tasks/add', array('as' => 'tasks.add', 'uses' => 'Tasks@index'));
+Route::get('/dashboard', ['as' => 'dashboard', 'middleware' => 'auth', 'uses' => 'Dashboard@index']);
 
-Route::get('/workers', array('as' => 'workers', 'uses' => 'Workers@index'));
-Route::get('/workers/add', array('as' => 'workers.add', 'uses' => 'Workers@index'));
+Route::resource('task', 'TaskController');
 
+Route::resource('worker', 'WorkerController');
+
+// Authentication routes...
+Route::get('/auth/login', ['as' => 'auth.login', 'middleware' => 'guest', 'uses' => 'Auth\AuthController@getLogin']);
+Route::post('/auth/login', 'Auth\AuthController@postLogin');
+Route::get('/auth/logout', ['as' => 'auth.logout', 'uses' => 'Auth\AuthController@getLogout']);
+
+// Registration routes...
+Route::get('/auth/register', ['as' => 'auth.register', 'middleware' => 'guest', 'uses' => 'Auth\AuthController@getRegister']);
+Route::post('/auth/register', 'Auth\AuthController@postRegister');
