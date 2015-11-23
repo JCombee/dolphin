@@ -18,9 +18,10 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return view('crud.table', [
-            'title' => 'Workers',
-            'collumns' => ['name' => 'Name', 'user_id' => 'Employee', 'planed' => 'Planned'],
+        return view('crud.index', [
+            'title' => trans('employee.title'),
+            'name' => 'task',
+            'collumns' => trans('employee.collumns'),
             'rows' => Task::all()
         ]);
     }
@@ -32,7 +33,12 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('crud.create', [
+            'title' => trans('employee.title'),
+            'name' => 'task',
+            'collumns' => trans('employee.collumns'),
+            'rows' => Task::all()
+        ]);
     }
 
     /**

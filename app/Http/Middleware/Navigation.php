@@ -18,17 +18,17 @@ class Navigation
     {
         Menu::make('Navigation', function($menu){
 
-            $menu->add('Dashboard', array('route' => 'dashboard'))->data('icon', 'dashboard');
+            $menu->add(trans('dashboard.title'), array('route' => 'dashboard'))->data('icon', 'dashboard');
             
-            $child = $menu->add('Tasks')->data('icon', 'tasks');
+            $child = $menu->add(trans('task.title'))->data('icon', 'tasks');
                 
-                $child->add('Index', array('route' => 'task.index'));
-                $child->add('Add', array('route' => 'task.create'));
+                $child->add(trans('task.overview'), array('route' => 'task.index'));
+                $child->add(trans('task.create'), array('route' => 'task.create'));
                 
-            $child = $menu->add('Workers')->data('icon', 'group');
+            $child = $menu->add(trans('employee.title'))->data('icon', 'group');
                 
-                $child->add('Index', array('route' => 'worker.index'));
-                $child->add('Add', array('route' => 'worker.create'));
+                $child->add(trans('employee.overview'), array('route' => 'employee.index'));
+                $child->add(trans('employee.create'), array('route' => 'employee.create'));
             
         });
         

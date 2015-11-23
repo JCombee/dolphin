@@ -15,11 +15,11 @@ Route::get('/', function () {
     return redirect('/dashboard');
 });
 
-Route::get('/dashboard', ['as' => 'dashboard', 'middleware' => 'auth', 'uses' => 'Dashboard@index']);
+Route::get('/dashboard', ['as' => 'dashboard', 'middleware' => 'auth', 'uses' => 'DashboardController@index']);
 
 Route::resource('task', 'TaskController');
 
-Route::resource('worker', 'WorkerController');
+Route::resource('employee', 'EmployeeController');
 
 // Authentication routes...
 Route::get('/auth/login', ['as' => 'auth.login', 'middleware' => 'guest', 'uses' => 'Auth\AuthController@getLogin']);

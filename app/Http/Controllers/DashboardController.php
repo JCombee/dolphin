@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class Dashboard extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class Dashboard extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        return view('dashboard.default');
     }
 
     /**

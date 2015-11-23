@@ -18,9 +18,10 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return view('crud.table', [
-            'title' => 'Employees',
-            'collumns' => ['id' => 'ID', 'name' => 'Name'],
+        return view('crud.index', [
+            'title' => trans('employee.title'),
+            'name' => 'employee',
+            'collumns' => trans('employee.collumns'),
             'rows' => User::all()
         ]);
     }

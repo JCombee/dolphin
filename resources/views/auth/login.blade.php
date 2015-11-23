@@ -8,7 +8,7 @@
 
 <div class="login-panel panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Please Sign In</h3>
+        <h3 class="panel-title">{{ trans('auth.header.login') }}</h3>
     </div>
     <div class="panel-body">
         <form role="form" method="post" action="{{ route('auth.login') }}">
@@ -31,7 +31,7 @@
         </form>
     </div>
     <div class="panel-footer">
-        <a href="{{ route('auth.register') }}">Register</a>
+        <a href="{{ route('auth.register') }}">{{ trans('auth.button.login') }}</a>
     </div>
 </div>
 
