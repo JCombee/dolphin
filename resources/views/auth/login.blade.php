@@ -31,7 +31,7 @@
         </form>
     </div>
     <div class="panel-footer">
-        <a href="{{ route('auth.register') }}">{{ trans('auth.button.login') }}</a>
+        <a href="{{ route('auth.register') }}">{{ trans('auth.button.register') }}</a>
     </div>
 </div>
 
