@@ -8,6 +8,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Task;
+use App\User;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Route;
 
 class TaskController extends Controller
 {
@@ -33,13 +36,26 @@ class TaskController extends Controller
      */
     public function create()
     {
+        $users = [];
+        foreach (User::all() as $user) {
+            array_push($users, (object) array('value' => $user->id, 'name' => $user->name));
+        }
         $collumns = [
-            [
+            (object) [
                 'element' => 'input',
-                'attr' => [
-                    'name' => trans('task.collumns.name'),
+                'label' => trans('task.collumns.name'),
+                'attr' => (object) [
+                    'name' => 'name',
                     'type' => 'text'
                 ]
+            ],
+            (object) [
+                'element' => 'select',
+                'label' => trans('task.collumns.user_id'),
+                'attr' => (object) [
+                    'name' => 'user_id'
+                ],
+                'options' => $users
             ]
         ];
 
@@ -58,7 +74,10 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $task = new Task;
+        $task->name = $request->name;
+        $task->user_id = $request->user_id;
+        $task->save();
     }
 
     /**

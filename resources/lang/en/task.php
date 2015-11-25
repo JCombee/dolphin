@@ -17,5 +17,6 @@ return [
     'collumns' => [
         'id' => 'ID',
         'name' => 'Name',
+        'user_id' => 'Employee',
     ],
 ];
