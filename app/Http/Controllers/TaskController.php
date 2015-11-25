@@ -19,9 +19,9 @@ class TaskController extends Controller
     public function index()
     {
         return view('crud.index', [
-            'title' => trans('employee.title'),
+            'title' => trans('task.title'),
             'name' => 'task',
-            'collumns' => trans('employee.collumns'),
+            'collumns' => trans('task.collumns'),
             'rows' => Task::all()
         ]);
     }
@@ -33,11 +33,20 @@ class TaskController extends Controller
      */
     public function create()
     {
+        $collumns = [
+            [
+                'element' => 'input',
+                'attr' => [
+                    'name' => trans('task.collumns.name'),
+                    'type' => 'text'
+                ]
+            ]
+        ];
+
         return view('crud.create', [
-            'title' => trans('employee.title'),
+            'title' => trans('task.title'),
             'name' => 'task',
-            'collumns' => trans('employee.collumns'),
-            'rows' => Task::all()
+            'collumns' => $collumns
         ]);
     }
 
